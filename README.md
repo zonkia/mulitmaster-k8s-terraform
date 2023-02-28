@@ -5,7 +5,7 @@ I. Prequisities
 
 II. Project info
 1. In variables.tf you can set any number of master/worker/monitoring nodes. For all nodes you can change types, the default is t3.medium
-2. Once deployed, it's better not to decrease master nodes count in ASG settings. If it's necessary to decrease it, then (once cluster is stable) one of master nodes must be terminated for new master to appear - only when new master is created inactive nodes are removed from Haproxy and ETCD members.
+2. Once deployed, it's better not to decrease master nodes count in ASG settings. If it's necessary to decrease it, then you need to remove inactive nodes from Haproxy and ETCD members manually.
 3. It's possible to increase the master count in ASG settings.
 4. Master and worker nodes are configured to withstand termination and to recreate themselves.
 5. In variables.tf you can change the Container Network Interface - "cni" to be 'calico' or 'flannel'.
