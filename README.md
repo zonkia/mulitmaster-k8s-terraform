@@ -9,6 +9,10 @@ II. Project info
 3. In variables.tf you can change "my_ip" if you want to restrict SSH access to the instances. The default 0.0.0.0/0 allows any IP to SSH to master instances.
 4. After "terraform apply" a private key file "kubernetesKey.pem" will be created in project directory - use it to SSH to the instances.
 5. Cluster is deployed with already configured cluster autoscaler for worker and monitoring nodes.
+6. Worker nodes are labeled as "node-role.kubernetes.io/worker=worker" and monitoring nodes as "node-role.kubernetes.io/worker=monitoring"
+7. Monitoring and Worker nodes are tainted as NoSchedule
+8. Cluster is configured to be able to deploy resources in AWS e.g. LoadBalancers
+9. IAM policies already include all necessary actions for Worpress + MySQL + EFS deployment.
 
 III. Deployment
 1. In terminal change directory to main.tf file directory
