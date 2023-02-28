@@ -13,6 +13,7 @@ II. Project info
 7. After "terraform apply" a private key file "kubernetesKey.pem" will be created in project directory - use it to SSH to the instances.
 8. Cluster is deployed with already configured cluster autoscaler for worker and monitoring nodes.
 9. Worker nodes are labeled as "node-role.kubernetes.io/worker=worker" and monitoring nodes as "node-role.kubernetes.io/worker=monitoring"
+10. Worker nodes and monitoring nodes have taint "NoSchedule" and thus every deployment should include tolerations for those taints. If you don't want default taints just remove them from join config files in data_worker.sh and data_monitoring.sh files 
 10. Monitoring and Worker nodes are tainted as NoSchedule
 11. Cluster is configured to be able to deploy resources in AWS e.g. LoadBalancers
 12. IAM policies already include all necessary actions for Worpress + MySQL + EFS deployment.
