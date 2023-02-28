@@ -8,4 +8,10 @@ II. Project info
 2. In variables.tf you can change the Container Network Interface - "cni" to be 'calico' or 'flannel'.
 3. In variables.tf you can change "my_ip" if you want to restrict SSH access to the instances. The default 0.0.0.0/0 allows any IP to SSH to master instances.
 4. After "terraform apply" a private key file "kubernetesKey.pem" will be created in project directory - use it to SSH to the instances.
-5. Cluster has already deployed cluster autoscaler for worker and monitoring nodes.
+5. Cluster is deployed with already configured cluster autoscaler for worker and monitoring nodes.
+
+III. Deployment
+1. In terminal change directory to main.tf file directory
+2. Run "terraform init" and "terraform apply"
+3. Wait ~5min for cluster to deploy and initial master to terminate itself
+4. SSH to any master node by using auto generated "kubernetesKey.pem" - it will appear in main.tf directory
