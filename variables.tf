@@ -45,7 +45,7 @@ variable "monitoring_node_size" {
   default     = "t3.medium"
 }
 # NAT instance
-variable "instance_size" {
+variable "nat_instance_size" {
   description = "NAT Instance size"
   default     = "t2.micro"
 }
@@ -54,7 +54,6 @@ variable "haproxy_instance_size" {
   description = "Haproxy Instance size"
   default     = "t3.small"
 }
-
 
 # PORTS (dont' change) -----------------------
 variable "http_port" {
