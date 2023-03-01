@@ -1,4 +1,4 @@
-# BASIC variables
+# Basic variables -----------------------
 variable "my_ip" {
   description = "personal ip for ssh access"
   default     = "0.0.0.0/0"
@@ -12,7 +12,7 @@ variable "region" {
   default     = "eu-central-1"
 }
 
-# cluster variables
+# Cluster variables -----------------------
 variable "cni" {
   description = "Choose container network interface: enter 'flannel' or 'calico'"
   default     = "flannel"
@@ -55,16 +55,11 @@ variable "haproxy_instance_size" {
   default     = "t3.small"
 }
 
-# PORTS (dont' change) -----------------------
+# Ports (dont' change) -----------------------
 variable "http_port" {
   description = "The port the server will use for HTTP requests"
   type        = number
   default     = 80
-}
-variable "mysql_port" {
-  description = "The port the server will use for MYSQL requests"
-  type        = number
-  default     = 3306
 }
 variable "ssh_port" {
   description = "The port the server will use for SSH"
@@ -75,34 +70,4 @@ variable "https_port" {
   description = "The port the server will use for HTTPS requests"
   type        = number
   default     = 443
-}
-variable "efs_port" {
-  description = "EFS port"
-  type        = number
-  default     = 2049
-}
-variable "elasticsearch_portA" {
-  description = "Elastic Search first port"
-  type        = number
-  default     = 9200
-}
-variable "elasticsearch_portB" {
-  description = "Elastic Search second port"
-  type        = number
-  default     = 9300
-}
-variable "filebeat_port" {
-  description = "The port of Filebeat->Logstash communication"
-  type        = number
-  default     = 5044
-}
-variable "oauth2proxy_port" {
-  description = "The port of oauth2proxy"
-  type        = number
-  default     = 4180
-}
-variable "kibana_port" {
-  description = "The port of Kibana"
-  type        = number
-  default     = 5601
 }
