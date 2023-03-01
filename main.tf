@@ -479,7 +479,7 @@ resource "aws_iam_instance_profile" "terra-worker-node-profile" {
 
 resource "aws_instance" "terra-nat-instance" {
   ami               = data.aws_ami.amazon-linux2.id
-  instance_type     = var.instance_size
+  instance_type     = var.nat_instance_size
   user_data         = file("data_nat.sh")
   key_name          = var.key_pair_name
   tags              = { Name = "terra-nat-instance" }
@@ -492,7 +492,7 @@ resource "aws_instance" "terra-nat-instance" {
 
 resource "aws_instance" "terra-haproxy-instance" {
   ami               = data.aws_ami.amazon-linux2.id
-  instance_type     = var.instance_size
+  instance_type     = var.haproxy_instance_size
   user_data = templatefile("data_haproxy.sh", {
     region                 = var.region
     key_pair               = tls_private_key.terra-private-key.private_key_pem
