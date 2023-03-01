@@ -17,6 +17,7 @@ II. Project info
 11. Worker nodes and monitoring nodes are tainted as "NoSchedule" and thus every deployment should include tolerations for those taints. If you don't want default taints just remove them from join config files in data_worker.sh and data_monitoring.sh files 
 12. Cluster is configured to be able to deploy resources in AWS e.g. LoadBalancers
 13. IAM policies already include all necessary actions for Worpress + MySQL + EFS deployment.
+14. RTO for destroyed master instance is ~3min and ~2,5min for worker node.
 
 III. Deployment
 1. In terminal change directory to main.tf file directory
