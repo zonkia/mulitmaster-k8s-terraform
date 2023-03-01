@@ -520,7 +520,6 @@ resource "aws_instance" "terra-master-instance" {
   key_name          = var.key_pair_name
   tags              = { 
     "Name" = "Kube-First-Master-Node"
-    "kubernetes.io/cluster/kubernetes" = "owned"
     "Function" = "Master"
     }
   subnet_id         = aws_subnet.terra-public-subnet1.id
@@ -571,11 +570,6 @@ resource "aws_autoscaling_group" "terra-asg-master" {
   tag {
     key                 = "Function"
     value               = "Master"
-    propagate_at_launch = true
-  }
-  tag {
-    key                 = "kubernetes.io/cluster/kubernetes"
-    value               = "owned"
     propagate_at_launch = true
   }
 }
