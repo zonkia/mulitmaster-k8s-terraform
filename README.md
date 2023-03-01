@@ -13,8 +13,8 @@ II. Project info
 7. In variables.tf you can change "my_ip" if you want to restrict SSH access to the instances. The default 0.0.0.0/0 allows any IP to SSH to master instances.
 8. After "terraform apply" a private key file "kubernetesKey.pem" will be created in project directory - use it to SSH to the instances.
 9. Cluster is deployed with already configured cluster autoscaler for worker and monitoring nodes.
-10. Worker nodes are labeled as "node-role.kubernetes.io/worker=worker" and monitoring nodes as "node-role.kubernetes.io/worker=monitoring"
-11. Worker nodes and monitoring nodes are tainted as "NoSchedule" and thus every deployment should include tolerations for those taints. If you don't want default taints just remove them from join config files in data_worker.sh and data_monitoring.sh files 
+10. Worker nodes are labeled as "node-role.kubernetes.io/worker=worker" and monitoring nodes as "node-role.kubernetes.io/worker=monitoring" - you can use those labels in NodeAffinity block in your deployments.
+11. Worker nodes and monitoring nodes are tainted as "NoSchedule" and because of this every deployment should include tolerations for those taints. If you don't want default taints just remove them from join config files in data_worker.sh and data_monitoring.sh files 
 12. Cluster is configured to be able to deploy resources in AWS e.g. LoadBalancers
 13. IAM policies already include all necessary actions for Worpress + MySQL + EFS deployment.
 14. RTO for destroyed master instance is ~3min and ~2,5min for worker node.
