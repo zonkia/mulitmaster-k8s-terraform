@@ -91,7 +91,7 @@ if [ "None" = "$masternodeip" ]
           ssh -i ${key_pair_name}.pem -o StrictHostKeyChecking=no "ec2-user@$haproxyip" sudo sed -i "/$line/d" /mastersip.txt
           # restart haproxy service
           ssh -i ${key_pair_name}.pem -o StrictHostKeyChecking=no "ec2-user@$haproxyip" sudo systemctl restart haproxy
-          # get DNS name for inactive master node and export it to variable
+          # get DNS name for active master node and export it to variable
           aws ec2 describe-instances --query "Reservations[].Instances[?PrivateIpAddress=='$masternodeip'].PrivateDnsName" --output text --region ${region} > masterhostname.txt
           echo "export masterhostname=$(head -1 masterhostname.txt)" >> /etc/profile
           source /etc/profile
